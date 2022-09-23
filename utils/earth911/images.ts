@@ -1,4 +1,4 @@
-const categoryImages = {
+export const categoryImages = {
   1: "https://i.imgur.com/Zeb0clO.png", //Automotive
   2: "https://i.imgur.com/B7itNtW.png", //Batteries
   3: "https://i.imgur.com/GzORf2L.png", //Construction
@@ -20,7 +20,7 @@ const categoryImages = {
   81: "https://i.imgur.com/crpnTcY.png", //Metals?
 };
 
-const materialImages = {
+export const materialImages = {
   445: "https://i.imgur.com/0iJLLU4.png",
   60: "https://i.imgur.com/OTAe7id.png",
   446: "https://i.imgur.com/hqX84xU.png",
