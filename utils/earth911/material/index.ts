@@ -1,29 +1,26 @@
-import { e911, e911_key } from "../index.ts";
-import { materialImages } from "../images.ts";
+import { getAllMaterials } from "./getAllMaterials.ts";
+import { getMaterialById } from "./getMaterialById.ts";
+import { getMaterialByIdList } from "./getMaterialByIdList.ts";
 
-interface Material {
+export interface Material {
   description: string;
   url: string;
   description_legacy: string;
   material_id: number;
   long_description: string;
-  family_ids: [number];
+  family_ids: number[];
   image: string;
+  image_url?: string;
 }
 
-interface MaterialResponse {
+export interface ResponseSuccess {
   search_time: string;
   num_results: number;
-  result: [Material];
+  result: Material[];
 }
 
-export const getAllMaterials = async () => {
-  const searchParams = new URLSearchParams({ ...e911_key });
-  const res = await e911.get(`earth911.getMaterials`, { searchParams })
-    .json() as MaterialResponse;
-  const results = res.result;
+export interface ResponseError {
+  error: string;
+}
 
-  const materialIds = Object.keys(materialImages);
-
-  return results;
-};
+export { getAllMaterials, getMaterialById, getMaterialByIdList };

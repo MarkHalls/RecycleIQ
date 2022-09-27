@@ -4,13 +4,14 @@ import { getAllMaterials } from "../../utils/earth911/material/index.ts";
 export const handler: Handlers<any | null> = {
   async GET(_, ctx) {
     const mats = await getAllMaterials();
-    console.log(mats[0]);
 
-    if (mats.length < 1) {
-      return ctx.render(null);
+    if (!mats.ok) {
+      console.error(mats.error);
+      return ctx.render(mats.error);
     }
+    console.log(mats.value[0]);
 
-    return ctx.render(JSON.stringify(mats[0]));
+    return ctx.render(JSON.stringify(mats.value[0]));
   },
 };
 
